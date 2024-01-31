@@ -23,15 +23,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-         
 
       - name: Run Tests for get-function
         working-directory: cloud-resume-challenge/get-function
-        run: python -m unittest discover tests  # Adjust based on your testing framework
-
-      # - name: Remove get-function
-      #   working-directory: cloud-resume-challenge/get-function
-      #   run: serverless remove
+        run: python app.py  # Adjust based on your testing framework
 
       - name: Install Dependencies and Deploy put-function
         working-directory: cloud-resume-challenge/put-function
@@ -41,8 +36,5 @@ jobs:
           
       - name: Run Tests for put-function
         working-directory: cloud-resume-challenge/put-function
-        run: python -m unittest discover tests  # Adjust based on your testing framework
+        run: python app.py  # Adjust based on your testing framework
 
-      # - name: Remove put-function
-      #   working-directory: cloud-resume-challenge/put-function
-      #   run: serverless remove
