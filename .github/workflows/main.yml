@@ -1,0 +1,23 @@
+name: main
+on:
+    push:
+      branches: [ "main" ]
+    pull_request:
+      branches: [ "main" ]
+      
+env:
+  Python_Version: 3.12
+
+jobs:
+  build-infra:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v2
+        with:
+          go-version: ${{env.Python_Version}}
+      - name: test get-function
+        run: cd cloud-resume-challenge/get-function && python test -v ./ && cd ../../
+      - name: test put-function
+        run: cd cloud-resume-challenge/put-function && python test -v ./ && cd ../../
