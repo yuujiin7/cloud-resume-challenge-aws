@@ -1,23 +1,42 @@
-name: main
+name: Python Unit Test
+
 on:
-    push:
-      branches: [ "main" ]
-    pull_request:
-      branches: [ "main" ]
-      
-env:
-  Python_Version: 3.12
+  push:
+    branches:
+      - main  # Replace with the branch you want to trigger the workflow on
 
 jobs:
-  build-infra:
+  test:
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          python-version: ${{env.Python_Version}}
-      - name: test get-function
-        run: cd cloud-resume-challenge/get-function && python test -v ./ && cd ../../
-      - name: test put-function
-        run: cd cloud-resume-challenge/put-function && python test -v ./ && cd ../../
+          python-version: 3.12
+
+      - name: Install dependencies for get-function
+        working-directory: get-function
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests in get-function
+        working-directory: get-function
+        run: python -m unittest discover -p 'test_*.py'
+
+      - name: Install dependencies for put-function
+        working-directory: put-function
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests in put-function
+        working-directory: put-function
+        run: python -m unittest discover -p 'test_*.py'
+
+
+
