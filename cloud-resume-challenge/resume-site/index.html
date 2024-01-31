@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Eugene's Resume - Aspiring Cloud Engineer/DevOps">
+  <title>Eugene's Cloud Resume</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <ul>
+      <li>
+        <a href="#about" class="dot active" data-scroll="about">
+          <span>About Me</span>
+        </a>
+      </li>
+      <li>
+        <a href="#education" class="dot" data-scroll="education">
+          <span>Education</span>
+        </a>
+      </li>
+      <li>
+        <a href="#experiences" class="dot" data-scroll="experiences">
+          <span>Experiences</span>
+        </a>
+      </li>
+      <li>
+        <a href="#skills" class="dot" data-scroll="skills">
+          <span>Skills</span>
+        </a>
+      </li>
+      <li>
+        <a href="#projects" class="dot" data-scroll="projects">
+          <span>Projects</span>
+        </a>
+      </li>
+      <li>
+        <a href="#certificates" class="dot" data-scroll="certificates">
+          <span>Certificates</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+
+
+
+  <p id="visitor">No. Visitor:
+    <span id="replaceme"></span>
+  </p>
+  <section class="sec" id="about">
+    <div class="container">
+      <div class="row ">
+        <div class="col-md-6 col-lg-6 d-flex">
+          <div class="img-about">
+            <!-- <div class="img" style="background-image:url(Assets\img\Eugene.jpg);"></div> -->
+            <div class="w3-third">
+              <div class="w3-card">
+                <img src="Assets\img\Eugene.jpg" style="width:60%">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+          <div class="row justify-content-start pb-3">
+            <div class="col-md-12">
+              <h2 class="mb-4">About Me</h2>
+              <p>I'm a graduate of Bachelor of Science in Information Technology in Polytechnic Univesity of the
+                Philippines.</p>
+              <p>Aspiring Cloud Engineer/DevOps</p>
+              <ul class="about-info mt-4 px-md-0 px-2">
+                <li class="d-flex">
+                  <span>Name:</span>
+                  <span>Eugene Rey Carta</span>
+                </li>
+                <li class="d-flex">
+                  <span>Location:</span>
+                  <span>Santa Rosa, Laguna</span>
+                </li>
+                <li class="d-flex">
+                  <span>Email:</span>
+                  <span>eugenereycarta@gmail.com</span>
+                </li>
+                <li class="d-flex">
+                  <span>LinkedIn: </span>
+                  <span>
+                    <a href="https://linkedin.com/in/eugene-carta-21b04a24b/" target="_blank"> Eugene Rey Carta </a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="counter-wrap d-flex mt-md-3">
+            <div class="text">
+              <p>
+                <a href="Assets/pdf/CARTA-Eugene-Rey-B.pdf" download="CARTA-Eugene-Rey-B.pdf"
+                  class="btn btn-primary py-3 px-3">Download CV</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" id="education">Education</section>
+  <section class="sec" id="experiences">Experiences</section>
+  <section class="sec" id="skills">
+    <div class="container">
+      <h1>
+        <b>SKILLS</b>
+      </h1>
+      <div class="row" id="skills-row">
+        <h5>Programming Languages & tools</h5>
+        <div class="col-md-6" id="skills-column">
+          <div>
+            <img src="Assets/logo/1.png" id="logo">
+            <img src="Assets/logo/2.png" id="logo">
+            <img src="Assets/logo/3.png" id="logo">
+            <img src="Assets/logo/4.png" id="logo">
+            <img src="Assets/logo/5.png" id="logo">
+            <img src="Assets/logo/6.png" id="logo">
+            <img src="Assets/logo/7.png" id="logo">
+            <img src="Assets/logo/8.png" id="logo">
+          </div>
+        </div>
+      </div>
+      <div class="row" id="skills-row">
+        <h5>Multimedia and Design Tools</h5>
+        <div class="col-md-6" id="skills-column">
+          <div>
+            <img src="Assets/logo/10.png" id="logo">
+            <img src="Assets/logo/11.png" id="logo">
+            <img src="Assets/logo/12.png" id="logo">
+            <img src="Assets/logo/13.png" id="logo">
+          </div>
+        </div>
+      </div>
+      <div id="AWS">
+        <h5>AWS CLOUD</h5>
+        <p>EC2, S3, Route 53, CloudFormation, SAM, IAM, CloudFront, Lambda, DynamoDb</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="projects">
+    <div class="container">
+      <div class="row">
+        <ul>
+          <li id="iHero">
+            <h3>iHero: Volunteer Management and Services Application for Red Cross Santa Rosa, Laguna </h3>
+            <h5>Capstone Thesis</h5>
+            <p>An Android mobile app and Web Admin Dashboard developed using Flutter and Firebase and REST APIs.</p>
+          </li>
+          <li id="resume-challenge">
+            <h3>Cloud Resume Challenge</h3>
+            <h5>The website you're looking at</h5>
+            <p>In the Cloud Resume Challenge, I successfully built and deployed a scalable and secure web application on
+              AWS using a range of cloud and DevOps technologies. Leveraging Amazon S3 for static file storage,
+              CloudFront for global content delivery, and AWS Certificate Manager for HTTPS security, the project
+              showcased high availability and performance. AWS Lambda, API Gateway, and DynamoDB were employed to handle
+              serverless computation, API management, and NoSQL database storage. Infrastructure provisioning was
+              automated using CloudFormation, and the website was crafted with HTML, CSS, and JavaScript. Python scripts
+              executed by Lambda were used to retrieve and store site visitor counts. The entire project was
+              version-controlled on GitHub, with automation powered by GitHub Actions, providing a comprehensive
+              demonstration of cloud and DevOps skills.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="certificates">
+    <div class="container">
+      <h1><b>BADGES & CERTIFICATIONS</b></h1>
+
+      <div class="row" id="certifications-row">
+        <div class="col-md-6">
+          <h5>Certifications</h5>
+          <div class="certifications">
+            <a href="https://cp.certmetrics.com/amazon/en/public/verify/credential/b7537dee51294e01ad8ce2dbdbd4f2b7"
+              target="_blank">
+              <img src="Assets/logo/17.png" class="logo-certificate" alt="Certification 1">
+            </a>
+            <!-- Add more certifications if needed -->
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="badges-row" style="padding-top: 50px;">
+        <div class="col-md-6">
+          <h5>Badges</h5>
+          <div class="badges">
+            <a href="https://www.credly.com/badges/4b3dbd48-6f6f-47b8-a782-89cb4e9e3316/linked_in?t=s7tuxx"
+              target="_blank">
+              <img src="Assets/logo/15.png" class="logo-certificate" alt="Badge 1">
+            </a>
+            <a href="https://www.credly.com/badges/7b1242cd-1e45-45bf-8cc7-278b9ddafd8b/public_url" target="_blank">
+              <img src="Assets/logo/16.png" class="logo-certificate" alt="Badge 2">
+            </a>
+            <!-- Add more badges if needed -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+
+</html>

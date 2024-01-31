@@ -1,0 +1,162 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  cloud-resume-challenge
+
+  Sample SAM Template for cloud-resume-challenge
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+
+    # You can add LoggingConfig parameters such as the Logformat, Log Group, and SystemLogLevel or ApplicationLogLevel. Learn more here https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html#sam-function-loggingconfig.
+    LoggingConfig:
+      LogFormat: JSON
+Resources:
+
+ # S3 Bucket for Website
+  MyWebsite:
+      Type: AWS::S3::Bucket
+      Properties:
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+            IndexDocument: index.html
+        BucketName: my-resume-website-jiin-v1
+ 
+
+  # S3 Bucket Policy for Website
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      PolicyDocument:
+        Id: MyPolicy
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: "*"
+            Action: "s3:GetObject"
+            Resource: !Join
+              - ""
+              - - "arn:aws:s3:::"
+                - !Ref MyWebsite
+                - /*
+      Bucket: !Ref MyWebsite
+
+  # CloudFront Distribution
+  MyDistribution:
+    Type: "AWS::CloudFront::Distribution"
+    Properties:
+      DistributionConfig:
+        ViewerCertificate:
+          AcmCertificateArn: !Ref MyCertificate
+          SslSupportMethod: sni-only
+        Aliases:
+          - website.eugenereycarta.live # TODO: Don't hardcode me
+        DefaultCacheBehavior:
+          ViewerProtocolPolicy: allow-all
+          TargetOriginId: my-resume-website-jiin-v1.s3-website-us-east-1.amazonaws.com
+          DefaultTTL: 0
+          MinTTL: 0
+          MaxTTL: 0
+          ForwardedValues:
+            QueryString: false
+        Origins:
+          - DomainName: my-resume-website-jiin-v1.s3-website-us-east-1.amazonaws.com
+            Id: my-resume-website-jiin-v1.s3-website-us-east-1.amazonaws.com
+            CustomOriginConfig:
+              OriginProtocolPolicy: http-only
+        Enabled: "true"
+        DefaultRootObject: index.html
+
+  # Route53 Record
+  MyRoute53Record:
+    Type: "AWS::Route53::RecordSetGroup"
+    Properties:
+      HostedZoneId: Z0279922998P9HKO93VH # TODO: Don't hardcode me
+      RecordSets:
+        - Name: website.eugenereycarta.live # TODO: Don't hardcode me
+          Type: A
+          AliasTarget:
+            HostedZoneId: Z2FDTNDATAQYW2
+            DNSName: !GetAtt MyDistribution.DomainName
+            
+  # Certificate Manager          
+  MyCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: website.eugenereycarta.live
+      ValidationMethod: DNS
+
+  # DynamoDB Table
+  DynamoDBTable:
+    # store the visitor count
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: VisitorCount
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      # ProvisionedThroughput:
+      #   ReadCapacityUnits: 1
+      #   WriteCapacityUnits: 1
+
+
+  # Get Lambda Function
+  GetFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName: VisitorCount
+      CodeUri: get-function/
+      Handler: app.lambda_handler
+      Runtime: python3.12
+      Architectures:
+      - x86_64
+      Events:
+        HelloWorld:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /get
+            Method: get
+
+  # Post Lambda Function
+  PutFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName: VisitorCount     
+      CodeUri: put-function/
+      Handler: app.lambda_handler
+      Runtime: python3.12
+      Architectures:
+      - x86_64
+      Events:
+        HelloWorld:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /put
+            Method: get
+  
+
+
+# Outputs:
+#   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+#   # Find out more about other implicit resources you can reference within SAM
+#   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+#   GetApi:
+#     Description: API Gateway endpoint URL for Prod stage for Get function
+#     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/get/"
+#   GetFunction:
+#     Description: Hello World Lambda Function ARN
+#     Value: !GetAtt GetFunction.Arn
+#   GetFunctionIamRole:
+#     Description: Implicit IAM Role created for Hello World function
+#     Value: !GetAtt GetFunctionRole.Arn
