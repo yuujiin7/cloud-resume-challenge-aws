@@ -94,7 +94,6 @@ Resources:
     # store the visitor count
     Type: AWS::DynamoDB::Table
     Properties:
-      Timeout: 30
       TableName: VisitorCount
       BillingMode: PAY_PER_REQUEST
       AttributeDefinitions:
@@ -112,7 +111,6 @@ Resources:
   GetFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      Timeout: 30
       Policies:
       - DynamoDBCrudPolicy:
           TableName: VisitorCount

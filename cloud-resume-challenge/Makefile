@@ -38,8 +38,8 @@ deploy-infra:
 
 deploy-site:
 	DOMAIN_NAME=$$(cat config.json | jq .DOMAIN_NAME -r); \
-	sed -i '' "s/.cmcloudlab.*\.info/.$$DOMAIN_NAME/" resume-site/index.html; \
-	aws-vault exec my-user --no-session -- aws s3 sync ./resume-site s3://open-up-the-cloud-site
+	sed -i '' "s/.eugenereycarta.*\.live/.$$DOMAIN_NAME/" resume-site/index.html; \
+	aws-vault exec my-user --no-session -- aws s3 sync ./resume-site s3://my-resume-website-jiin-v1
 
 hostedzone:
 	aws-vault exec my-user --no-session -- aws route53 list-hosted-zones | jq .HostedZones[0].Id | cut -d "\"" -f 2 | cut -d "/" -f3
