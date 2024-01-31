@@ -117,14 +117,14 @@ Resources:
   ApiGatewayApi:
     Type: AWS::Serverless::Api
     Properties:
-      StageName: Prod
+      StageName: prod
       Domain:
-        DomainName: 
-          !join ["", [!Ref ApiDomainNameParameter, ".", !Ref DomainNameParameter]]
+        DomainName:
+          !Join ["", [!Ref ApiDomainNameParameter, !Ref DomainNameParameter]]
         CertificateArn: !Ref MyCertificate
-        Route53Record:
+        Route53:
           HostedZoneId:
-            !Ref HostedZoneIdParameter
+            Ref: HostedZoneParameter
       
 
   # Get Lambda Function
@@ -142,8 +142,6 @@ Resources:
       Events:
         CatchAll:
           Type: Api # More info about API Event Source:
-        HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /get
             Method: get
@@ -165,8 +163,6 @@ Resources:
       Events:
         CatchAll:
           Type: Api # More info about API Event Source:
-        HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /put
             Method: get
