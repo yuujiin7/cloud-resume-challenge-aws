@@ -72,7 +72,12 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14
-      - run: cd cloud-resume-challenge/end-to-end-test && npm install && node index.js
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Run Tests for index.js
+        working-directory: cloud-resume-challenge/get-function
+        run: npm install && node index.js
   
   deploy-site:
     runs-on: ubuntu-latest
