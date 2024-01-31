@@ -86,14 +86,7 @@ Resources:
   MyCertificate:
     Type: AWS::CertificateManager::Certificate
     Properties:
-      DomainName: !Join ["", ["*.", !Ref DomainNameParameter]]
-      SubjectAlternativeNames:
-        - !Ref DomainNameParameter
-        - !Join ["", ["*.", !Ref DomainNameParameter]]
-      DomainValidationOptions:
-        - DomainName: !Ref DomainNameParameter
-          HostedZoneId:
-            Ref: HostedZoneParameter
+      DomainName: website.eugenereycarta.live
       ValidationMethod: DNS
 
   # DynamoDB Table
@@ -113,19 +106,6 @@ Resources:
       #   ReadCapacityUnits: 1
       #   WriteCapacityUnits: 1
 
-  # API Gateway Custom Domain Name
-  ApiGatewayApi:
-    Type: AWS::Serverless::Api
-    Properties:
-      StageName: prod
-      Domain:
-        DomainName:
-          !Join ["", [!Ref ApiDomainNameParameter, !Ref DomainNameParameter]]
-        CertificateArn: !Ref MyCertificate
-        Route53:
-          HostedZoneId:
-            Ref: HostedZoneParameter
-      
 
   # Get Lambda Function
   GetFunction:
@@ -140,13 +120,11 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        CatchAll:
-          Type: Api # More info about API Event Source:
+        HelloWorld:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /get
             Method: get
-            RestApiId: 
-              Ref: ApiGatewayApi
 
   # Post Lambda Function
   PutFunction:
@@ -161,13 +139,11 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        CatchAll:
-          Type: Api # More info about API Event Source:
+        HelloWorld:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /put
             Method: get
-            RestApiId: 
-              Ref: ApiGatewayApi
   
 
 
