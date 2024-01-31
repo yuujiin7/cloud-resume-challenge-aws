@@ -18,9 +18,6 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install Serverless Framework
-        run: npm install -g serverless
-
       - name: Install Dependencies and Deploy get-function
         working-directory: cloud-resume-challenge/get-function
         run: |
@@ -32,9 +29,9 @@ jobs:
         working-directory: cloud-resume-challenge/get-function
         run: python -m unittest discover tests  # Adjust based on your testing framework
 
-      - name: Remove get-function
-        working-directory: cloud-resume-challenge/get-function
-        run: serverless remove
+      # - name: Remove get-function
+      #   working-directory: cloud-resume-challenge/get-function
+      #   run: serverless remove
 
       - name: Install Dependencies and Deploy put-function
         working-directory: cloud-resume-challenge/put-function
@@ -47,6 +44,6 @@ jobs:
         working-directory: cloud-resume-challenge/put-function
         run: python -m unittest discover tests  # Adjust based on your testing framework
 
-      - name: Remove put-function
-        working-directory: cloud-resume-challenge/put-function
-        run: serverless remove
+      # - name: Remove put-function
+      #   working-directory: cloud-resume-challenge/put-function
+      #   run: serverless remove
