@@ -39,7 +39,7 @@ jobs:
         run: python app.py  # Adjust based on your testing framework
 
 
-  build-and-deploy-infra:
+  build-and-deploy-backend:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -56,6 +56,24 @@ jobs:
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
         working-directory: cloud-resume-challenge
 
+  integration-test-backend:
+    needs: build-and-deploy-backend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd cloud-resume-challenge && make integration-test && cd ../../
+
+
+  end-to-end-test:
+    needs: integration-test-backend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - run: cd cloud-resume-challenge/end-to-end-test && npm install && node index.js
+  
   deploy-site:
     runs-on: ubuntu-latest
     steps:
@@ -67,6 +85,4 @@ jobs:
         AWS_S3_BUCKET: my-resume-website-jiin-v1
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        SOURCE_DIR: cloud-resume-challenge/resume-site
-
-
+        SOURCE_DIR: cloud-resume-challenge/resume-site        
