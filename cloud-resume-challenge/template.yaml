@@ -86,7 +86,14 @@ Resources:
   MyCertificate:
     Type: AWS::CertificateManager::Certificate
     Properties:
-      DomainName: website.eugenereycarta.live
+      DomainName: !Join ["", ["*.", !Ref DomainNameParameter]]
+      SubjectAlternativeNames:
+        - !Ref DomainNameParameter
+        - !Join ["", ["*.", !Ref DomainNameParameter]]
+      DomainValidationOptions:
+        - DomainName: !Ref DomainNameParameter
+          HostedZoneId:
+            Ref: HostedZoneParameter
       ValidationMethod: DNS
 
   # DynamoDB Table
