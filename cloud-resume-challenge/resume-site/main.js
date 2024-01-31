@@ -35,7 +35,7 @@ $(document).ready(function () {
         const signal = controller.signal;
     
         // Set a timeout (in milliseconds), e.g., 5000 milliseconds (5 seconds)
-        const timeout = 2000;
+        const timeout = 1000;
     
         // Set the timeout for the fetch request
         const timeoutId = setTimeout(() => {

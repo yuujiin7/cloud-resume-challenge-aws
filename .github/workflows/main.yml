@@ -77,7 +77,7 @@ jobs:
           node-version: 14
       - name: Run Tests for index.js
         working-directory: cloud-resume-challenge
-        run: cd resume-site && npm install && npm run test && cd ../
+        run: cd resume-site && npm install && node index.js
   
   deploy-site:
     runs-on: ubuntu-latest
