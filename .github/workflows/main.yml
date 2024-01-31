@@ -23,7 +23,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          serverless deploy
+         
 
       - name: Run Tests for get-function
         working-directory: cloud-resume-challenge/get-function
@@ -38,8 +38,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          serverless deploy
-
+          
       - name: Run Tests for put-function
         working-directory: cloud-resume-challenge/put-function
         run: python -m unittest discover tests  # Adjust based on your testing framework
