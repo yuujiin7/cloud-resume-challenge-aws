@@ -86,3 +86,32 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         SOURCE_DIR: cloud-resume-challenge/resume-site        
+
+
+  # # create something for ec2 deployment
+  # ec2-deploy:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #     with:
+  #       image-id: ami-0c55b159cbfafe1f0
+  #       instance-type: t2.micro
+  #       key-name: my-key-pair
+  #       security-group-ids: sg-0b5e6c79cf4cb5a4a
+  #       subnet-id: subnet-0ecac448
+  #       region: us-east-1
+  #       tags: Name=MyInstance
+  #       wait-time: 300
+  #       retries: 10
+  #       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #       ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+  #       ssh-public-key: ${{ secrets.SSH_PUBLIC_KEY }}
+  #       ssh-port: 22
+  #       ssh-username: ec2-user
+  #       ssh-wait-time: 300
+  #       ssh-retries: 10
+  #       ssh-remote-port: 22
+  #       ssh-remote-user: ec2-user
+  #       ssh-remote-host: ${{ secrets.SSH_REMOTE_HOST }}
+  #       ssh-remote-command: "echo 'Hello, world!'"
