@@ -2,6 +2,14 @@ SHELL:=/bin/bash
 
 .PHONY: build
 .SILENT: integration-test
+AWS_REGION := us-east-1
+AWS_ACCOUNT_ID := 447447069092
+REPOSITORY_NAME := my-resume-website-jiin-v1
+IMAGE_NAME := cloud-resume-image
+TAG := latest
+
+
+
 
 build:
 	sam build
@@ -49,3 +57,15 @@ invoke-get:
 
 invoke-put:
 	sam build && aws-vault exec my-user --no-session -- sam local invoke PutFunction
+
+login:
+	@aws ecr get-login-password --region $(AWS_REGION) | docker login --username AWS --password-stdin $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com
+
+build:
+	@docker build -t $(IMAGE_NAME) .
+
+tag:
+	@docker tag $(IMAGE_NAME):latest $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com/$(REPOSITORY_NAME):$(TAG)
+
+push: login
+	@docker push $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com/$(REPOSITORY_NAME):$(TAG)

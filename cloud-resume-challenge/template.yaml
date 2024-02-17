@@ -167,7 +167,29 @@ Resources:
     Type: AWS::ECR::Repository
     Properties:
       RepositoryName: my-resume-website-jiin-v1
-      
+
+  MyTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: my-resume-website-jiin-v1
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+        - FARGATE
+      Cpu: 256
+      Memory: 512
+      ExecutionRoleArn: !GetAtt MyExecutionRole.Arn
+      TaskRoleArn: !GetAtt MyTaskRole.Arn
+      ContainerDefinitions:
+        - Name: my-resume-website-jiin-v1
+          Image: !Sub "${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/my-resume-website-jiin-v1:latest"
+          PortMappings:
+            - ContainerPort: 80
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref MyLogGroup
+              awslogs-region: !Ref "AWS::Region"
+              awslogs-stream-prefix: my-resume-website-jiin-v1
   
 
 
