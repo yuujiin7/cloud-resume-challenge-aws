@@ -2,6 +2,7 @@ SHELL:=/bin/bash
 
 .PHONY: build
 .SILENT: integration-test
+
 AWS_REGION := us-east-1
 AWS_ACCOUNT_ID := 447447069092
 REPOSITORY_NAME := my-resume-website-jiin-v1
