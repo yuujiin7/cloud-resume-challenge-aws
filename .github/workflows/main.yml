@@ -55,6 +55,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+
+      - uses: actions/cache@v2
+        with:
+          path: cloud-resume-challenge/.venv
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+          
       - uses: aws-actions/setup-sam@v1
       - uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -91,7 +98,13 @@ jobs:
           AWS_DEFAULT_REGION: us-east-1
           AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
         run: |
-          aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
+          # Retrieve ECR login token
+          ECR_LOGIN_COMMAND=$(aws ecr get-login-password --region $AWS_REGION)
+      
+          # Run the login command
+          $ECR_LOGIN_COMMAND
+          
+          # Push Docker image to ECR
           docker push $ECR_REGISTRY/$IMAGE_REPO_NAME:$IMAGE_TAG
 
 
