@@ -69,3 +69,6 @@ tag:
 
 push: login
 	@docker push $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com/$(REPOSITORY_NAME):$(TAG)
+
+run:
+	@docker run -p 9000:80 $(IMAGE_NAME):latest

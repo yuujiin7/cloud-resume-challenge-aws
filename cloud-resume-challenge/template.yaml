@@ -199,8 +199,8 @@ Resources:
     Properties:
       LogGroupName: !Sub "/ecs/my-resume-website-jiin-v1"
   
-  
 
+  
   MyTaskDefinition:
     Type: AWS::ECS::TaskDefinition
     Properties:
