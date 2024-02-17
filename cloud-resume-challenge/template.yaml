@@ -194,6 +194,13 @@ Resources:
       ManagedPolicyArns:
         - "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 
+  MyLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub "/ecs/my-resume-website-jiin-v1"
+  
+  
+
   MyTaskDefinition:
     Type: AWS::ECS::TaskDefinition
     Properties:
