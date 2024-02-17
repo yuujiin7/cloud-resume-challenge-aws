@@ -14,19 +14,14 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set Up Python
+        
         uses: actions/setup-python@v2
+
         with:
           python-version: '3.12'
+        
+        
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: |
-            cloud-resume-challenge/get-function/.venv
-            cloud-resume-challenge/put-function/.venv
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
 
       - name: Install Dependencies and Deploy get-function
         working-directory: cloud-resume-challenge/get-function
@@ -55,62 +50,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-        
       - uses: actions/cache@v2
         with:
-          path: cloud-resume-challenge/.venv
+          path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: ${{ runner.os }}-pip-
-                
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - run: pip install -r cloud-resume-challenge/get-function/requirements.txt
       - uses: aws-actions/setup-sam@v1
       - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-        
-      - name: Debug ECR Login Command
-        run: |
-          echo "ECR Login Command: aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY"
-        
       - run: sam build
         working-directory: cloud-resume-challenge
-        
-      - name: Build Docker Image
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1
-          ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com
-          IMAGE_REPO_NAME: my-resume-website-jiin-v1
-          IMAGE_TAG: latest
-          IMAGE_NAME: cloud-resume-image
-          AWS_DEFAULT_REGION: us-east-1
-          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-        run: |
-          cd cloud-resume-challenge
-          ls -la
-          pwd
-          # docker build -t $ECR_REGISTRY/$IMAGE_REPO_NAME:$IMAGE_TAG -f Dockerfile .
-          @docker build -t $(IMAGE_NAME) .
-        
-      - name: Push Docker Image to ECR
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1
-          IMAGE_REPO_NAME: my-resume-website-jiin-v1
-          ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_REPO_NAME
-          IMAGE_TAG: latest
-          AWS_DEFAULT_REGION: us-east-1
-          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-        run: |
-          ECR_LOGIN_COMMAND=$@aws ecr get-login-password --region $(AWS_REGION) | docker login --username AWS --password-stdin $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com
-          $ECR_LOGIN_COMMAND
-          docker tag $ECR_REGISTRY/$IMAGE_REPO_NAME:$IMAGE_TAG
-          docker push $ECR_REGISTRY/$IMAGE_REPO_NAME:$IMAGE_TAG
-          echo "Docker Image Pushed to ECR"
-
+      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
+        working-directory: cloud-resume-challenge
 
   integration-test-backend:
     needs: build-and-deploy-backend
@@ -141,8 +97,7 @@ jobs:
         AWS_S3_BUCKET: my-resume-website-jiin-v1
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        SOURCE_DIR: cloud-resume-challenge/resume-site
-        
+        SOURCE_DIR: cloud-resume-challenge/resume-site        
 
 
   # # create something for ec2 deployment
@@ -172,3 +127,4 @@ jobs:
   #       ssh-remote-user: ec2-user
   #       ssh-remote-host: ${{ secrets.SSH_REMOTE_HOST }}
   #       ssh-remote-command: "echo 'Hello, world!'"
+ 
