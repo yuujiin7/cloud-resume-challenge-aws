@@ -1,48 +1,57 @@
-$(document).ready(function () {
+window.addEventListener('DOMContentLoaded', event => {
 
-    const OFFSET_TOP = 150; // Adjust as needed
+    // Navbar shrink function
+    var navbarShrink = function () {
+        const navbarCollapsible = document.body.querySelector('#mainNav');
+        if (!navbarCollapsible) {
+            return;
+        }
+        if (window.scrollY === 0) {
+            navbarCollapsible.classList.remove('navbar-shrink');
+        } else {
+            navbarCollapsible.classList.add('navbar-shrink');
+        }
+    };
 
-    function onScroll() {
-        var link = $('.navbar a.dot');
-        var top = $(window).scrollTop();
-
-        $('.sec').each(function () {
-            var id = $(this).attr('id');
-            var height = $(this).height();
-            var offset = $(this).offset().top - OFFSET_TOP;
-
-            if (top >= offset && top < offset + height) {
-                updateActiveClasses(id);
-            }
+    // This is a more modern approach than the jQuery version, 
+    // but the Bootstrap data-attributes in the HTML do most of the work now.
+    // This just adds a visual shrink effect not included in the standard scrollspy.
+    const mainNav = document.body.querySelector('#mainNav');
+    if (mainNav) {
+        new bootstrap.ScrollSpy(document.body, {
+            target: '#mainNav',
+            offset: 80, // Adjust offset to highlight nav link at the right time
         });
-    }
+    };
 
-    function updateActiveClasses(id) {
-        var link = $('.navbar a.dot');
-        var listItem = $('.navbar').find('[data-scroll="' + id + '"]').closest('li');
-
-        link.removeClass('active');
-        listItem.find('.dot').addClass('active');
-        $('.navbar ul li').removeClass('hovered');
-        listItem.addClass('hovered');
-    }
-
-    $(window).on('scroll', _.throttle(onScroll, 200));
-
+    // Visitor Counter Function
     function visitorCount() {
+        // The fetch logic is perfect. No changes needed here.
         fetch('https://yc1mkn35qf.execute-api.us-east-1.amazonaws.com/Prod/put')
             .then(() => fetch('https://yc1mkn35qf.execute-api.us-east-1.amazonaws.com/Prod/get'))
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then((data) => {
-                document.getElementById('replaceme').innerText = data.visitor_count;
+                // Check if the element exists before trying to set its innerText
+                const visitorElement = document.getElementById('replaceme');
+                if (visitorElement) {
+                    visitorElement.innerText = data.visitor_count;
+                }
             })
             .catch(error => {
                 console.error('Error fetching visitor count:', error);
+                const visitorElement = document.getElementById('replaceme');
+                if (visitorElement) {
+                    visitorElement.innerText = 'N/A';
+                }
             });
     }
-    
+
+    // Call the function to get the visitor count
     visitorCount();
-    
-    
-    
+
 });

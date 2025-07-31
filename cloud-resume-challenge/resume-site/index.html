@@ -4,277 +4,327 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Eugene's Resume - Aspiring Cloud Engineer/DevOps">
-  <title>Eugene's Cloud Resume</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <meta name="description" content="Eugene's Resume - Aspiring Cloud & DevOps Engineer">
+  <title>Eugene Carta | Cloud & DevOps Engineer</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body>
-  <nav class="navbar">
-    <ul>
-      <li>
-        <a href="#about" class="dot active" data-scroll="about">
-          <span>About Me</span>
-        </a>
-      </li>
-      <li>
-        <a href="#education" class="dot" data-scroll="education">
-          <span>Education</span>
-        </a>
-      </li>
-      <li>
-        <a href="#experiences" class="dot" data-scroll="experiences">
-          <span>Experiences</span>
-        </a>
-      </li>
-      <li>
-        <a href="#skills" class="dot" data-scroll="skills">
-          <span>Skills</span>
-        </a>
-      </li>
-      <li>
-        <a href="#projects" class="dot" data-scroll="projects">
-          <span>Projects</span>
-        </a>
-      </li>
-      <li>
-        <a href="#certificates" class="dot" data-scroll="certificates">
-          <span>Certificates</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80">
 
-
-
-
-  <p id="visitor">No. Visitor:
-    <span id="replaceme"></span>
-  </p>
-  <section class="sec" id="about">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-      <div class="row ">
-        <div class="col-md-6 col-lg-6 d-flex">
-          <div class="img-about">
-            <!-- <div class="img" style="background-image:url(Assets\img\Eugene.jpg);"></div> -->
-            <div class="w3-third">
-              <div class="w3-card">
-                <img src="Assets\img\Eugene.jpg" style="width:60%">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-6">
-          <div class="row justify-content-start pb-3">
-            <div class="col-md-12">
-              <h2 class="mb-4">ABOUT ME</h2>
-              <p>I'm a graduate of Bachelor of Science in Information Technology in Polytechnic Univesity of the
-                Philippines.</p>
-              <p>Aspiring Cloud Engineer/DevOps</p>
-              <ul class="about-info mt-4 px-md-0 px-2">
-                <li class="d-flex">
-                  <span>Name:</span>
-                  <span>Eugene Rey Carta</span>
-                </li>
-                <li class="d-flex">
-                  <span>Location:</span>
-                  <span>Santa Rosa, Laguna</span>
-                </li>
-                <li class="d-flex">
-                  <span>Email:</span>
-                  <span>eugenereycarta@gmail.com</span>
-                </li>
-                <li class="d-flex">
-                  <span>LinkedIn: </span>
-                  <span>
-                    <a href="https://linkedin.com/in/eugene-carta-21b04a24b/" target="_blank"> Eugene Rey Carta </a>
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="counter-wrap d-flex mt-md-3">
-            <div class="text">
-              <p>
-                <a href="Assets/pdf/CARTA-Eugene-Rey-B.pdf" download="CARTA-Eugene-Rey-B.pdf"
-                  class="btn btn-primary py-3 px-3">Download CV</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="sec" id="education"><div class="container">
-    <h1>
-      <b>EDUCATION</b>
-    </h1>
-    <div class="row">
-      <ul>
-        <li id="PUP">
-          
-          <h3>Bachelor of Science in Information Technology</h3>
-          <h5>Polytechnic University of the Philippines</h5>
-          <h6>June 2019 - October 2023</h6>
-          
-        </li>
-        <li id="CFC">
-          
-          <h3>Child Formation Center</h3>
-          <h5>Highschool and Senior Highschool (Technical Drafting Strand)</h5>
-          <h6>2012 - 2019</h6>
-          
-        </li>
-      </ul>
-    </div>
-  </div></section>
-  <section class="sec" id="experiences"><div class="container">
-    <h1>
-      <b>EXPERIENCES</b>
-    </h1>
-    <div class="row">
-      <ul>
-        <li id="NMPC">
-          <h3>IT Intern</h3>
-          <h5>New Marketlink Pharmaceutical Corp.</h5>
-          <p>Help on daily Technical Support.</p>
-          <p>Help on building and managing WordPress website</p>
-          <p>Graphic Designing of Banners, Ads, e-Detailers</p>
-          <p>Created a front-end for e-Detailing app and backend using .Net MVC and CRUD</p>
-        </li>
-
-        <li id="IDSO">
-          <h3>Freelance Web Developer</h3>
-          <h5>Ideal Solutions Company</h5>
-          <p>Design and build their company website</p>
-          <p><a href="https://www.idso-sa.com">Go to their website</a></p>
-          
-
-
-          
-          
-        </li>
-
-
-      </ul>
-    </div>
-  </div></section>
-  <section class="sec" id="skills">
-    <div class="container">
-      <h1>
-        <b>SKILLS</b>
-      </h1>
-      <div class="row" id="skills-row">
-        <h5>Programming Languages & tools</h5>
-        <div class="col-md-6" id="skills-column">
-          <div>
-            <img src="Assets/logo/1.png" id="logo">
-            <img src="Assets/logo/2.png" id="logo">
-            <img src="Assets/logo/3.png" id="logo">
-            <img src="Assets/logo/4.png" id="logo">
-            <img src="Assets/logo/5.png" id="logo">
-            <img src="Assets/logo/6.png" id="logo">
-            <img src="Assets/logo/7.png" id="logo">
-            <img src="Assets/logo/8.png" id="logo">
-          </div>
-        </div>
-      </div>
-      <div class="row" id="skills-row">
-        <h5>Multimedia and Design Tools</h5>
-        <div class="col-md-6" id="skills-column">
-          <div>
-            <img src="Assets/logo/10.png" id="logo">
-            <img src="Assets/logo/11.png" id="logo">
-            <img src="Assets/logo/12.png" id="logo">
-            <img src="Assets/logo/13.png" id="logo">
-          </div>
-        </div>
-      </div>
-      <div id="AWS">
-        <h5>AWS CLOUD</h5>
-        <p>EC2, S3, Route 53, CloudFormation, SAM, IAM, CloudFront, Lambda, DynamoDb</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="projects">
-    
-    <div class="container">
-      <h1>
-        <b>PROJECTS</b>
-      </h1>
-      <div class="row">
-        <ul>
-          <li id="iHero">
-            <h3>iHero: Volunteer Management and Services Application for Red Cross Santa Rosa, Laguna </h3>
-            <h5>Capstone Thesis</h5>
-            <p>An Android mobile app and Web Admin Dashboard developed using Flutter and Firebase and REST APIs.</p>
-          </li>
-          <li id="resume-challenge">
-            <h3>Cloud Resume Challenge</h3>
-            <h5>The website you're looking at</h5>
-            <p>In the Cloud Resume Challenge, I successfully built and deployed a scalable and secure web application on
-              AWS using a range of cloud and DevOps technologies. Leveraging Amazon S3 for static file storage,
-              CloudFront for global content delivery, and AWS Certificate Manager for HTTPS security, the project
-              showcased high availability and performance. AWS Lambda, API Gateway, and DynamoDB were employed to handle
-              serverless computation, API management, and NoSQL database storage. Infrastructure provisioning was
-              automated using CloudFormation, and the website was crafted with HTML, CSS, and JavaScript. Python scripts
-              executed by Lambda were used to retrieve and store site visitor counts. The entire project was
-              version-controlled on GitHub, with automation powered by GitHub Actions, providing a comprehensive
-              demonstration of cloud and DevOps skills.</p>
-          </li>
+      <a class="navbar-brand" href="#about">Eugene Carta</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu <i class="fas fa-bars ms-1"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto py-4 py-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experiences">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
         </ul>
       </div>
     </div>
-  </section>
+  </nav>
 
-  <section class="sec" id="certificates">
+  <div class="visitor-counter">
+    <i class="fas fa-eye"></i> Visitors: <span id="replaceme">Loading...</span>
+  </div>
+
+  <section class="page-section" id="about">
     <div class="container">
-      <h1><b>BADGES & CERTIFICATIONS</b></h1>
-
-      <div class="row" id="certifications-row">
-        <div class="col-md-6">
-          <h5>Certifications</h5>
-          <div class="certifications">
-            <a href="https://cp.certmetrics.com/amazon/en/public/verify/credential/b7537dee51294e01ad8ce2dbdbd4f2b7"
-              target="_blank">
-              <img src="Assets/logo/17.png" class="logo-certificate" alt="Certification 1">
-            </a>
-            <!-- Add more certifications if needed -->
-          </div>
+      <div class="row align-items-center">
+        <div class="col-lg-4 text-center mb-5 mb-lg-0">
+          <img src="Assets/img/Eugene.jpg" class="img-fluid rounded-circle shadow-lg" alt="Eugene Carta">
         </div>
-      </div>
-
-      <div class="row" id="badges-row" style="padding-top: 50px;">
-        <div class="col-md-6">
-          <h5>Badges</h5>
-          <div class="badges">
-            <a href="https://www.credly.com/badges/4b3dbd48-6f6f-47b8-a782-89cb4e9e3316/linked_in?t=s7tuxx"
-              target="_blank">
-              <img src="Assets/logo/15.png" class="logo-certificate" alt="Badge 1">
-            </a>
-            <a href="https://www.credly.com/badges/7b1242cd-1e45-45bf-8cc7-278b9ddafd8b/public_url" target="_blank">
-              <img src="Assets/logo/16.png" class="logo-certificate" alt="Badge 2">
-            </a>
-            <!-- Add more badges if needed -->
-          </div>
+        <div class="col-lg-8">
+          <h1 class="display-4 fw-bold">Eugene Rey Carta</h1>
+          <h2 class="text-primary mb-4">Aspiring Cybersecurity Professional</h2>
+          <p class="lead mb-4">
+            Graduate of BS Information Technology from the Polytechnic University of the Philippines with a passion for building robust, scalable cloud infrastructure. My goal is to leverage automation and cloud-native technologies to solve complex problems and drive business success.
+          </p>
+          <ul class="list-unstyled about-info">
+            <li><i class="fas fa-map-marker-alt fa-fw"></i> Santa Rosa, Laguna</li>
+            <li><i class="fas fa-envelope fa-fw"></i> eugenereycarta@gmail.com</li>
+            <li><i class="fab fa-linkedin fa-fw"></i> <a href="https://linkedin.com/in/eugene-carta-21b04a24b/" target="_blank">linkedin.com/in/eugene-carta</a></li>
+          </ul>
+          <a href="Assets/pdf/CARTA-Eugene-Rey-B.pdf" download="CARTA-Eugene-Rey-B.pdf" class="btn btn-primary btn-lg mt-3">
+            <i class="fas fa-download me-2"></i>Download CV
+          </a>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="page-section bg-light" id="experiences">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-heading">Experience</h2>
+        <hr class="divider" />
+      </div>
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+          <ul class="timeline">
+            <li>
+              <div class="timeline-badge"><i class="fas fa-briefcase"></i></div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4 class="timeline-title">Systems Engineer Network and Security</h4>
+                  <p class="text-muted"><i class="far fa-building me-1"></i> Questech Co., Inc.</p>
+                </div>
+                <div class="timeline-body">
+                  <p>Managed network and security infrastructure, configuring firewalls, routers, switches, and APs. Oversaw security solutions including EDR, XDR, SIEM, and SOAR.</p>
+                </div>
+              </div>
+            </li>
+            <li class="timeline-inverted">
+              <div class="timeline-badge"><i class="fas fa-graduation-cap"></i></div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4 class="timeline-title">IT Intern</h4>
+                  <p class="text-muted"><i class="far fa-building me-1"></i> New Marketlink Pharmaceutical Corp.</p>
+                </div>
+                <div class="timeline-body">
+                  <p>Provided daily technical support, assisted in building a WordPress site, designed marketing materials, and developed a front-end for an e-Detailing app with a .NET MVC backend.</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-badge"><i class="fas fa-code"></i></div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4 class="timeline-title">Freelance Web Developer</h4>
+                  <p class="text-muted"><i class="far fa-building me-1"></i> Ideal Solutions Company</p>
+                </div>
+                <div class="timeline-body">
+                  <p>Designed and developed the official company website from the ground up. <a href="https://www.idso-sa.com" target="_blank">View Website</a></p>
+                </div>
+              </div>
+            </li>
+             <li class="timeline-inverted">
+              <div class="timeline-badge"><i class="fas fa-magic"></i></div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4 class="timeline-title">Freelance Video Editor & Graphic Designer</h4>
+                  <p class="text-muted"><i class="far fa-user me-1"></i> Project-Based</p>
+                </div>
+                <div class="timeline-body">
+                  <p>Edited raw video footage into polished final products for promotional materials, social media, and corporate presentations. Designed various digital and print assets, including logos, branding guides, and marketing banners tailored to client specifications.</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+  <section class="page-section" id="education">
+      <div class="container">
+          <div class="text-center mb-5">
+              <h2 class="section-heading">Education</h2>
+              <hr class="divider" />
+          </div>
+          <div class="row">
+              <div class="col-md-6 mb-4 mb-md-0">
+                  <div class="card h-100 shadow-sm">
+                      <div class="card-body">
+                          <h4 class="card-title">Bachelor of Science in Information Technology</h4>
+                          <h5 class="text-primary">Polytechnic University of the Philippines</h5>
+                          <p class="card-text text-muted">June 2019 - October 2023</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="card h-100 shadow-sm">
+                      <div class="card-body">
+                          <h4 class="card-title">High School & Senior High School</h4>
+                          <h5 class="text-primary">Child Formation Center</h5>
+                          <p class="card-text text-muted">Technical Drafting Strand | 2012 - 2019</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+  <section class="page-section bg-light" id="skills">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-heading">Technical Skills</h2>
+      <hr class="divider" />
+    </div>
+    <div class="row gx-4">
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center">
+            <h4 class="card-title"><i class="fas fa-cloud me-2"></i>Cloud & DevOps</h4>
+            <p class="card-text text-muted small">EC2, S3, Route 53, CloudFront, Lambda, DynamoDB, IAM, CloudFormation, SAM, GitHub Actions</p>
+            <div class="skills-logo-container">
+                <img src="Assets/logo/aws.png" alt="AWS" class="skill-logo" title="AWS">
+                <img src="Assets/logo/python.png" alt="Python" class="skill-logo" title="Python">
+                <img src="Assets/logo/github.png" alt="GitHub" class="skill-logo" title="GitHub">
+                
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center">
+            <h4 class="card-title"><i class="fas fa-code me-2"></i>Web & Mobile</h4>
+            <p class="card-text text-muted small">Flutter, Firebase, Laravel, Filament, .NET, HTML, CSS, JS</p>
+            <div class="skills-logo-container">
+                <img src="Assets/logo/flutter.png" alt="Flutter" class="skill-logo" title="Flutter">
+                <img src="Assets/logo/firebase.png" alt="Firebase" class="skill-logo" title="Firebase">
+                <img src="Assets/logo/laravel.png" alt="Laravel" class="skill-logo" title="Laravel">
+                <img src="Assets/logo/7.png" alt=".NET" class="skill-logo" title=".NET">
+                <img src="Assets/logo/1.png" alt="HTML5" class="skill-logo" title="HTML5">
+                <img src="Assets/logo/2.png" alt="PHP" class="skill-logo" title="PHP">
+                <img src="Assets/logo/3.png" alt="JavaScript" class="skill-logo" title="JavaScript">
+                <img src="Assets/logo/4.png" alt="CSS3" class="skill-logo" title="CSS3">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center">
+            <h4 class="card-title"><i class="fas fa-shield-alt me-2"></i>Network & Security</h4>
+            <p class="card-text text-muted small">Fortinet, Cisco, CrowdStrike, Sophos, Tehtris XDR Platform</p>
+            <div class="skills-logo-container">
+              <img src="Assets/logo/fortinet.png" alt="Fortinet" class="skill-logo" title="Fortinet">
+              <img src="Assets/logo/cisco.png" alt="Cisco" class="skill-logo" title="Cisco">
+              <img src="Assets/logo/crowdstrike.png" alt="Crowdstrike" class="skill-logo" title="Crowdstrike">
+              <img src="Assets/logo/sophos.svg" alt="Sophos" class="skill-logo" title="Sophos">
+              <img src="Assets/logo/tehtris.png" alt="Tehtris" class="skill-logo" title="Tehtris">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center">
+            <h4 class="card-title"><i class="fas fa-pencil-ruler me-2"></i>Multimedia & Design</h4>
+            <p class="card-text text-muted small">Photoshop, Illustrator, Premiere Pro, Figma</p>
+            <div class="skills-logo-container">
+              <img src="Assets/logo/10.png" alt="Photoshop" class="skill-logo">
+              <img src="Assets/logo/11.png" alt="Illustrator" class="skill-logo">
+              <img src="Assets/logo/12.png" alt="Premiere Pro" class="skill-logo">
+              <img src="Assets/logo/13.png" alt="Figma" class="skill-logo">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="page-section" id="projects">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-heading">Projects</h2>
+        <hr class="divider" />
+      </div>
+      <div class="row gx-5">
+        <div class="col-lg-6 mb-4">
+          <div class="card h-100 shadow-sm project-card">
+            <div class="card-body">
+              <h4 class="card-title">Cloud Resume Challenge</h4>
+              <h6 class="card-subtitle mb-2 text-muted">This very website</h6>
+              <p class="card-text">Built and deployed a serverless resume website on AWS. The architecture includes S3 for hosting, CloudFront for content delivery, Lambda and API Gateway for a serverless API (visitor counter), and DynamoDB for data storage. Infrastructure is managed via AWS SAM/CloudFormation and deployed automatically using a CI/CD pipeline with GitHub Actions.</p>
+              <a href="https://github.com/yuujiin7/cloud-resume-challenge-aws" class="card-link" target="_blank"><i class="fab fa-github me-1"></i> View on GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+          <div class="card h-100 shadow-sm project-card">
+            <div class="card-body">
+              <h4 class="card-title">iHero: Volunteer Management App</h4>
+              <h6 class="card-subtitle mb-2 text-muted">Capstone Thesis</h6>
+              <p class="card-text">Developed a cross-platform mobile app (Android/iOS) using Flutter for Red Cross Santa Rosa. The system, which included a web admin dashboard, was built on Firebase (Authentication, Firestore, Storage) and integrated with REST APIs for comprehensive volunteer and event management.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+          <div class="card h-100 shadow-sm project-card">
+            <div class="card-body">
+              <h4 class="card-title">Service Report and Maintenance Agreement Monitoring</h4>
+              <h6 class="card-subtitle mb-2 text-muted">Questech Co., Inc.</h6>
+              <p class="card-text">Developed a web application for monitoring service reports and maintenance agreements using Laravel.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+          <div class="card h-100 shadow-sm project-card">
+            <div class="card-body">
+              <h4 class="card-title">Clothing Manufacturing Monitoring</h4>
+              <h6 class="card-subtitle mb-2 text-muted">Freelance</h6>
+              <p class="card-text">Developed a web application for monitoring clothing manufacturing processes and quality control using Laravel Filament.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-light" id="certificates">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-heading">Badges & Certifications</h2>
+        <hr class="divider" />
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+          <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="0c6adcbd-aa44-4ea7-a5bc-62e412f65e1c" data-share-badge-host="https://www.credly.com"></div>
+        </div>
+        <div class="col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+          <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="5be5089a-a989-4a42-9a82-9e142d9e3927" data-share-badge-host="https://www.credly.com"></div>
+        </div>
+        <div class="col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+            <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="7b1242cd-1e45-45bf-8cc7-278b9ddafd8b" data-share-badge-host="https://www.credly.com"></div>
+        </div>
+        <div class="col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+            <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="4b3dbd48-6f6f-47b8-a782-89cb4e9e3316" data-share-badge-host="https://www.credly.com"></div>
+        </div>
+        <div class="col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+            <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b7f134b5-5b1e-4cb0-9e7d-48c77520c98c" data-share-badge-host="https://www.credly.com"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer py-4">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-lg-start">Copyright &copy; Eugene Carta 2025</div>
+        <div class="col-lg-6 text-lg-end">
+          <a class="link-dark text-decoration-none me-3" href="https://linkedin.com/in/eugene-carta-21b04a24b/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+          <a class="link-dark text-decoration-none" href="https://github.com/yuujiin7" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
   <script src="main.js"></script>
-
 </body>
 
 </html>
